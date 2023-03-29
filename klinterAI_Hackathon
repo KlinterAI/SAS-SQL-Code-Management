@@ -1,0 +1,45 @@
+CREATE TABLE GENERAL(
+SERIAL_NO num,
+MATERIAL_PO bit,
+EQUIPMENT_ID num,
+EPC_NO varchar(34),
+SNMP_TOKEN varchar(128),
+ACTIVITY_ID varchar(50)
+);
+
+INSERT INTO GENERAL
+VALUES (1,true,8896445922,Tagcat,'16e7e3c86f2d966c6fc2b2d8cb0146ea','11.136.66.28','7-100 - Damproofing and Waterproofing')
+VALUES (2,true,1713765551,Vinder,'1df34965beba232089078154f5c58574','2.173.141.119','2-625 - Retaining Wall Drainage Piping')
+VALUES (3,false,4586149221,Omba,'f16bf34d7cb6414315f5ffbaf84041c3','171.90.163.68','13-260 - Sludge Conditioning Systems')
+VALUES (4,false,6752521468,Divape,'9562152349d67b62c8073c7412d0312e','133.192.83.143','15-200 - Process Piping')
+VALUES (5,false,0384443575,Voonix,'b9a41b1a5bffbb7d7dc6f346b68146ed','142.81.68.233','9-600 - Flooring')
+VALUES (6,false,4965364163,Photojam,'cee4e5efc92dc23ff2d68d82bf68d600','182.34.205.236','1-530 - Temporary Construction')
+VALUES (7,false,8806156691,Rhynyx,'ea72238d709dd88911bf41a5cd203d38','197.136.85.223','11-050 - Library Equipment')
+VALUES (8,true,3573402445,Wikizz,'bee98925b520f4fce25c7b7ea52a3c5b','209.218.86.251','10-750 - Telephone Specialties')
+VALUES (9,true,9942900861,Janyx,'f89c9b418c9f067eb5436fd15e43350a','207.142.0.216','2-823 - PVC Fences and Gates')
+VALUES (10,false,4151283307,Kwilith,'421525f3d625911a95a4bef8283a97ee','223.170.137.108','9-100 - Metal Support Assemblies');
+
+CREATE TABLE MATERIAL(
+MATERIAL_PO num,
+MATERIAL_PO_DATE date,
+MATERIAL_NO num,
+MANUFACTURER varchar(30),
+EQUIPMENT_ID num
+);
+
+CREATE TABLE IoT(
+EPC_NO num,
+MANUFACTURER varchar(30)
+);
+
+CREATE TABLE SNMP(
+EPC_NO num,
+SNMP_TOKEN num,
+SNMP_LABEL varchar(10)
+);
+
+CREATE TABLE ACTIVITY(
+ACTIVITY_ID varchar(5),
+ACTIVITY_DESC varchar(20),
+EQUIPMENT_ID num
+);
