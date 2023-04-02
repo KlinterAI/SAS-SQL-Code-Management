@@ -82,16 +82,67 @@ WHERE MATERIAL_PO = 0;
 
 CREATE TABLE teamref.IoT(
 SERIAL_NO int,
-EPC_NO int,
+EPC_NO varchar(34),
 MANUFACTURER varchar(30)
 );
 
+INSERT INTO teamref.IoT 
+VALUES (1,'0693163682c45209e444865d32e9e1b6c47f67fe','Meevee')
+VALUES (2,'91c1e5595b1494e457805900a3480242e3221ffd','Dabtype')
+VALUES (3,'a4502b39f6797d4c66619bf705b1e0397f1b24ac','Voomm')
+VALUES (4,'8b203f01a095016f18f9dc8f80c618799547ac71','Gabspot')
+VALUES (5,'b895557ce48bb229731d474f01372c4e86952b41','Katz')
+VALUES (6,'f0be2c2701ba42ed95be028d16e8b34968b49306','Flipbug')
+VALUES (7,'d7eca44a4cd794c087f9af555c03faa13dc49760','Feedspan')
+VALUES (8,'7e461c68b3085fda645ac20492e902f39c5e42e0','Flashset')
+VALUES (9,'16e131a578f13dc12c15a01743c938d0455c5553','Lajo')
+VALUES (10,'8bd2ececbbbad82a3fc8dfd829c822293b186389','Fanoodle');
+
+UPDATE teamref.IoT 
+    SET EPC_NO = (SELECT EPC_NO
+                   FROM teamref.GENERAL
+                   WHERE IoT.SERIAL_NO = GENERAL.SERIAL_NO
+                  )
+    WHERE EXISTS (SELECT EPC_NO
+                   FROM teamref.GENERAL
+                   WHERE IoT.SERIAL_NO = GENERAL.SERIAL_NO);
+
+UPDATE teamref.IoT 
+    SET MANUFACTURER = (SELECT MANUFACTURER
+                    FROM teamref.MATERIAL
+                    WHERE IoT.SERIAL_NO = MATERIAL.SERIAL_NO
+                    )
+    WHERE EXISTS (SELECT MANUFACTURER
+                    FROM teamref.MATERIAL
+                    WHERE IoT.SERIAL_NO = MATERIAL.SERIAL_NO);
+
 CREATE TABLE teamref.SNMP(
 SERIAL_NO int,
-EPC_NO int,
-SNMP_TOKEN int,
+EPC_NO varchar(34),
+SNMP_TOKEN varchar(128),
 SNMP_LABEL varchar(10)
 );
+
+INSERT INTO teamref.SNMP
+VALUES (1,'73630e43276dd01177fea738fa6623e73f2044e7','61.72.96.36'	'image/tiff')
+VALUES (2,'ecda1f2679b95907cbd2f25c93da0e31326c6151','132.240.104.181','image/tiff')
+VALUES (3,'fb60e5d7feb7c6a4f7e0320404d9b714c46a5ae9','68.233.95.129','image/png')
+VALUES (4,'27086fcccf0a6b3a393552dedfac43b0b33b9755','83.40.233.213','text/plain')
+VALUES (5,'d6c93a3864db0f3ae251c2effd3118d845006f6b','239.244.79.32','application/x-excel')
+VALUES (6,'623e92efe0d901e38a359970192dbacff2a4e0be','190.41.34.52','application/mspowerpoint')
+VALUES (7,'152347e88fb362b5c3fc8931cb2d4763f0eb5e85','230.17.238.158','text/plain')
+VALUES (8,'e950b3deffe1e4acf5ec5cc4c3aeefb4d03fb73e','56.157.31.102','image/png')
+VALUES (9,'5263cce2e2230fef71658292e33cc9b6e79cdd91','170.113.174.62','image/gif')
+VALUES (10,'0c2c2b4581f7bce8a794f83b57d98336cf56ce0e','146.39.66.70','video/mpeg');
+
+UPDATE teamref.SNMP 
+    SET EPC_NO = (SELECT EPC_NO
+                    FROM teamref.IoT
+                    WHERE SNMP.SERIAL_NO = IoT.SERIAL_NO
+                    )
+    WHERE EXISTS (SELECT EPC_NO
+                    FROM teamref.IoT
+                    WHERE SNMP.SERIAL_NO = IoT.SERIAL_NO);
 
 CREATE TABLE teamref.REPORTED_ISSUES(
 SERIAL_NO int,
@@ -115,5 +166,16 @@ OBJECT14 varchar(30),
 OBJECT15 varchar(30)
 );
 
+INSERT INTO teamref.REPORTED_ISSUES
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ()
+VALUES ();
 
 QUIT;
