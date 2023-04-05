@@ -6,7 +6,7 @@ PROC SQL; * Code executes and runs on SAS Server using ProcSQL ;
 * For code to run in SAS using GitHub, download the 'SAS' Extension. ;
 
 CREATE TABLE teamref.GENERAL(
-PRIMARY KEY SERIAL_NO int,
+SERIAL_NO int,
 MATERIAL_PO smallint,
 EQUIPMENT_ID int,
 MANUFACTURER varchar(30),
@@ -289,5 +289,33 @@ WHERE SCORE = 2;
 UPDATE teamref.REPORTED_ISSUES
 SET METHOD = 'A Potential Risk' AND CATEGORY = 'Potential Issue' AND NAME = 'Delays'
 WHERE SCORE = 1;
+
+
+/* Exporting SQL files to JSON only works on SQL Server - JSON used can make an API...
+SELECT * FROM teamref.GENERAL
+    FOR JSON PATH,
+        INCLUDE_NULL_VALUES
+    GO
+
+SELECT * FROM teamref.MATERIAL
+    FOR JSON PATH,
+        INCLUDE_NULL_VALUES
+    GO
+
+SELECT * FROM teamref.IoT
+    FOR JSON PATH,
+        INCLUDE_NULL_VALUES
+    GO
+
+SELECT * FROM teamref.SNMP
+    FOR JSON PATH,
+        INCLUDE_NULL_VALUES
+    GO
+
+SELECT * FROM teamref.REPORTED_ISSUES
+    FOR JSON PATH,
+        INCLUDE_NULL_VALUES
+    GO
+*/
 
 QUIT;
