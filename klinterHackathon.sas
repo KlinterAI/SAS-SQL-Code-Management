@@ -149,7 +149,7 @@ CASE varchar(30),
 NAME varchar(15),
 METHOD varchar(20),
 CATEGORY varchar(30),
-TIME_OF_SNAPSHOT datetime,
+TIME_OF_SNAPSHOT varchar(20), /* "%sysfunc( datetime() )" values when inputting. */
 EVENT_ID smallint,
 SCORE smallint,
 TIME int,
