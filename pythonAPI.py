@@ -24,6 +24,12 @@ def calcOpTime(df):
     id = df['id'] 
     df['TIMESTAMP'] = pd.to_datetime(df['TIMESTAMP'])
     timestamps_by_id = df.groupby('ID')['TIMESTAMP'].apply(list)
+    """
+    Having troubles with code above. There is a problem with trying to set timestamp values that pertain ONLY
+    to the corresponding ID values. I was thinking maybe using a 2-D list where each list would be handled by
+    using something like 'df[-1][i] - df[0][i]' to equal a dictionary (value) of each ID (key) and then print
+    from said API request page.
+    """
 
     print(timestamps_by_id)
 
