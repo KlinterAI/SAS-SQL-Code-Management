@@ -118,7 +118,7 @@ SNMP_LABEL varchar(10)
 );
 
 INSERT INTO teamref.SNMP
-VALUES (1,'236.120.180.181','61.72.96.36'	'image/tiff')
+VALUES (1,'236.120.180.181','61.72.96.36','image/tiff')
 VALUES (2,'2.190.209.46','132.240.104.181','image/tiff')
 VALUES (3,'67.9.124.136','68.233.95.129','image/png')
 VALUES (4,'27086fcccf0a6b3a393552dedfac43b0b33b9755','83.40.233.213','text/plain')
